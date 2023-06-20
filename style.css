@@ -1,0 +1,148 @@
+:root {
+    --text: hsl(49, 22%, 90%);
+    --background: #ebe9e0;
+    --primary-button: #bfc2d4;
+    --secondary-button: #e2e1d4;
+    --accent: #bfc2d4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    overflow-x: hidden;
+    height: 200vh;
+}
+
+.wrapper1 {
+    min-height: 100vh;
+    background: url(./img/macOS-Big-Sur-Daylight-Wallpaper-iDownloadBlog-7.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrapper2{
+    min-height: 100vh;
+    background: url(./img/macOS-Big-Sur-Daylight-Wallpaper-iDownloadBlog.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrapper3{
+    min-height: 100vh;
+    background: url(./img/macOS-Big-Sur-Vector-Wave-Wallpaper-iDownloadBlog.jpg);
+    transform: scaley(-1);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav {
+    /* background-color: var(--background); */
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 8vh;
+    padding: 0 2rem;
+    backdrop-filter: blur(2rem);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-logo {
+    margin: 0 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nav-list {
+    flex: 1;
+    justify-content: center;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-list>.nav-link>a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+}
+
+.mobile-nav-toggle{
+    display: none;
+}
+
+@media screen AND (max-width:600px) {
+    nav {
+        justify-content: space-between;
+        backdrop-filter: none;
+        background: hsl(0, 0%, 0%, 0.1);
+    }
+
+    .nav-logo {
+        margin: 0 2rem;
+        font-size: 1.5rem;
+    }
+
+    .mobile-nav-toggle{
+        margin: 0 2rem;
+        display: block;
+        z-index: 9999;
+    }
+    .mobile-nav-toggle div{
+        width: 1.75rem;
+        height: 3px;
+        background-color: rgb(226, 226, 226);
+        margin: 5px;
+        transition: 0.5s all;
+    }
+
+    .mobile-nav-toggle[area-expanded="true"] .line1{
+        transform: translate(0,0.5rem) rotate(45deg);
+    }
+    .mobile-nav-toggle[area-expanded="true"] .line2{
+        transform: rotatez(180deg);
+        opacity: 0;
+    }
+    .mobile-nav-toggle[area-expanded="true"] .line3{
+        transform: translate(0,-0.5rem) rotate(-45deg);
+    }
+
+    .nav-list {
+        z-index: 1000;
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        background: hsl(0, 0%, 0%, 0.7);
+        backdrop-filter: blur(2rem);
+        padding: min(25vh, 10rem) 2rem;
+        transform: translateX(100%);
+        transition: transform 400ms ease-in-out;
+    }
+
+    .nav-list>.nav-link{
+        font-size: 1.2rem;
+    }
+
+    .nav-list[data-visible="true"]{
+        transform: translateX(0%);
+    }
+
+    @supports(backdrop-filter: blur(2rem)) {
+        .nav-list {
+            background: hsl(0, 0%, 0%, 0.2);
+            backdrop-filter: blur(2rem);
+        }
+    }
+}
