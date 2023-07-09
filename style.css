@@ -117,6 +117,11 @@ nav {
         transition: 0.5s all;
     }
 
+    .mobile-nav-toggle[area-expanded="true"]{
+        position: fixed;
+        right: 2rem;
+    }
+
     .mobile-nav-toggle[area-expanded="true"] .line1{
         transform: translate(0,0.5rem) rotate(45deg);
     }
